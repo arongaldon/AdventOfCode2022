@@ -6,13 +6,13 @@ using namespace AronGaldonGines::AOC2022::D02;
 
 int main()
 {
-    Puzzle1 day02P1;
-    auto scores = day02P1.readScores();
+    Puzzle1 d02p1;
+    auto scores = d02p1.readScores();
     auto result = reduce(scores.begin(), scores.end());
     cout << "*** Puzzle1 ***" << endl << "The total score would be " << result << endl << endl;
 
-    Puzzle2 day02Puzzle2;
-    scores = day02Puzzle2.readScores();
+    Puzzle2 d02p2;
+    scores = d02p2.readScores();
     result = reduce(scores.begin(), scores.end());
     cout << "*** Puzzle2 ***" << endl << "The total score would be " << result << endl << endl;
 
