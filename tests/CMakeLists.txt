@@ -12,4 +12,4 @@ enable_testing()
 find_package(GTest REQUIRED)
 
 add_subdirectory(day01)
-# add_subdirectory(day02)
+add_subdirectory(day02)

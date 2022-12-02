@@ -5,7 +5,7 @@
 
 using namespace std;
 
-namespace AronGaldonGines::AOC2022::Day01 {
+namespace AronGaldonGines::AOC2022::D01 {
 
 const auto INPUT_FILE_NAME = "input";
 
@@ -17,4 +17,4 @@ public:
     int maxCalories(const vector<int> &totals) const;
 };
 
-} // namespace AronGaldonGines::AOC2022::Day01
+} // namespace AronGaldonGines::AOC2022::D01

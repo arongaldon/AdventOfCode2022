@@ -5,7 +5,7 @@
 
 using namespace std;
 
-namespace AronGaldonGines::AOC2022::Day02 {
+namespace AronGaldonGines::AOC2022::D02 {
 
 const auto INPUT_FILE_NAME = "input";
 
@@ -15,4 +15,4 @@ public:
     vector<int> readScores() const;
 };
 
-} // namespace AronGaldonGines::AOC2022::Day02
+} // namespace AronGaldonGines::AOC2022::D02

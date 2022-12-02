@@ -1,5 +1,5 @@
-add_executable(Day02)
-target_sources(Day02
+add_executable(D02)
+target_sources(D02
     PRIVATE
         main.cpp
         Puzzle1.h
@@ -8,8 +8,8 @@ target_sources(Day02
         Puzzle2.cpp
 )
 
-add_library(LibDay02 STATIC)
-target_sources(LibDay02
+add_library(LibD02 STATIC)
+target_sources(LibD02
     PRIVATE
         Puzzle1.cpp
         Puzzle2.cpp

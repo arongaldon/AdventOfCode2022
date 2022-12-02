@@ -2,7 +2,7 @@
 
 #include <fstream>
 
-using namespace AronGaldonGines::AOC2022::Day01;
+using namespace AronGaldonGines::AOC2022::D01;
 
 Top3 Puzzle2::threeTopCalories(const vector<int> &totals) const
 {

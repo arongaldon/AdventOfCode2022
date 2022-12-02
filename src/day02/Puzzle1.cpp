@@ -13,7 +13,7 @@
 
 #include <fstream>
 
-using namespace AronGaldonGines::AOC2022::Day02;
+using namespace AronGaldonGines::AOC2022::D02;
 
 vector<int> Puzzle1::readScores() const
 {

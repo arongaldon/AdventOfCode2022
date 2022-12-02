@@ -6,7 +6,7 @@
 
 using namespace std;
 
-namespace AronGaldonGines::AOC2022::Day01 {
+namespace AronGaldonGines::AOC2022::D01 {
 
 using Top3 = array<int, 3>;
 
@@ -17,4 +17,4 @@ public:
     int sumThreeTopCalories(const Top3 &top3) const;
 };
 
-} // namespace AronGaldonGines::AOC2022::Day01
+} // namespace AronGaldonGines::AOC2022::D01

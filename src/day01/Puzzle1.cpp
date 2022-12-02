@@ -2,7 +2,7 @@
 
 #include <fstream>
 
-using namespace AronGaldonGines::AOC2022::Day01;
+using namespace AronGaldonGines::AOC2022::D01;
 
 vector<string> Puzzle1::readInputLines() const
 {
