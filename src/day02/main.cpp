@@ -12,7 +12,10 @@ int main()
     auto result = reduce(scores.begin(), scores.end());
     cout << "*** Puzzle1 ***" << endl << "The total score would be " << result << endl << endl;
 
-    // Puzzle2 day02Puzzle2;
+    Puzzle2 day02Puzzle2;
+    scores = day02Puzzle2.readScores();
+    result = reduce(scores.begin(), scores.end());
+    cout << "*** Puzzle2 ***" << endl << "The total score would be " << result << endl << endl;
 
     return EXIT_SUCCESS;
 }

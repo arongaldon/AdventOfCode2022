@@ -1,8 +1,6 @@
 #pragma once
 
-#include <array>
-#include <sstream>
-#include <vector>
+#include "Puzzle1.h"
 
 using namespace std;
 
@@ -11,6 +9,7 @@ namespace AronGaldonGines::AOC2022::Day02 {
 class Puzzle2
 {
 public:
+    vector<int> readScores() const;
 };
 
 } // namespace AronGaldonGines::AOC2022::Day02
