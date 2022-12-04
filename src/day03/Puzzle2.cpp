@@ -4,64 +4,41 @@
 
 #include "Puzzle2.h"
 
-#include <fstream>
+#include <sstream>
 
 using namespace AronGaldonGines::AOC2022::D03;
 
-vector<int> Puzzle2::readScores() const
+vector<Group> Puzzle2::groupItems(const vector<string> &listsOfItems) const
 {
-    ifstream inputFile(INPUT_FILE_NAME);
-    string line;
-    vector<int> scores;
+    vector<Group> groups;
 
-    while (getline(inputFile, line)) {
-        auto score = 0;
-        switch (line[2]) {
-        case 'X': // Lose
-            switch (line[0]) {
-            case 'A':
-                score = 3;
-                break;
-            case 'B':
-                score = 1;
-                break;
-            case 'C':
-                score = 2;
-                break;
-            }
-            break;
-        case 'Y': // Draw
-            switch (line[0]) {
-            case 'A':
-                score = 1;
-                break;
-            case 'B':
-                score = 2;
-                break;
-            case 'C':
-                score = 3;
-                break;
-            }
-            score += 3;
-            break;
-        case 'Z': // Win
-            switch (line[0]) {
-            case 'A':
-                score = 2;
-                break;
-            case 'B':
-                score = 3;
-                break;
-            case 'C':
-                score = 1;
-                break;
-            }
-            score += 6;
-            break;
-        }
-        scores.push_back(score);
+    int i = 0;
+    Group grp = {"", "", ""};
+    for (auto items : listsOfItems) {
+        grp[i] = items;
+        if (i == 2) {
+            i = 0;
+            groups.push_back(grp);
+            fill(grp.begin(), grp.end(), "");
+        } else
+            ++i;
     }
-    inputFile.close();
 
-    return scores;
+    return groups;
+}
+
+string Puzzle2::extractBadgeItemTypes(const vector<Group> &groups) const
+{
+    string badgeItemTypes;
+
+    for (Group grp : groups) {
+        for (auto item : grp.at(0)) {
+            if (grp.at(1).find(item) != string::npos && grp.at(2).find(item) != string::npos) {
+                badgeItemTypes += item;
+                break;
+            }
+        }
+    }
+
+    return badgeItemTypes;
 }
