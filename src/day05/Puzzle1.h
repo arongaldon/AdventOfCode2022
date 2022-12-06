@@ -26,7 +26,7 @@ class Puzzle1
 public:
     Puzzle1();
     string cratesOnTop() const;
-    void rearrange();
+    virtual void rearrange();
 
 protected:
     StacksOfCrates createStacks() const;
