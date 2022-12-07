@@ -1,17 +1,17 @@
 #include "Puzzle1.h"
 
 #include <fstream>
-#include <sstream>
 
 using namespace AronGaldonGines::AOC2022::D06;
 
-Puzzle1::Puzzle1()
-    : m_input(readInput())
+Puzzle1::Puzzle1(size_t maxMarkerSize)
+    : Puzzle1(readInput(), maxMarkerSize)
 {
 }
 
-Puzzle1::Puzzle1(const string &input)
+Puzzle1::Puzzle1(const string &input, size_t maxMarkerSize)
     : m_input(input)
+    , m_maxMarkerSize(maxMarkerSize)
 {
 }
 
@@ -20,9 +20,10 @@ size_t Puzzle1::findLastIndexOfFirstMarker() const
     size_t mi = 0, i = 0; // indexes for marker and for input
     string marker;
 
-    while (i < m_input.size() && mi < MARKER_SIZE - 1) {
+    while (i < m_input.size() && mi < m_maxMarkerSize - 1) {
         marker += m_input[i];
-        for (mi = 0; mi < marker.size() - 1 && mi < MARKER_SIZE - 1; ++mi)
+
+        for (mi = 0; mi < marker.size() - 1 && mi < m_maxMarkerSize - 1; ++mi)
 
             // Duplicate character detected: trim marker
             if (m_input[i] == marker[mi]) {
