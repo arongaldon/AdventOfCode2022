@@ -22,7 +22,7 @@ protected:
     void readDirectories(const vector<string> &input);
     string pathVectorToString(vector<string> path) const;
 
-private:
+protected:
     map<string, int> m_directories;
 };
 

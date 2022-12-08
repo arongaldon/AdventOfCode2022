@@ -57,8 +57,15 @@ int main()
     }
     cout << "Sum=" << sum << endl;
 
-    // Puzzle2 d07p2;
-    // cout << "*** Puzzle2 ***" << endl << "* Input file: " << endl;
+    Puzzle2 d07p2Sample(sample);
+    const int total {70000000};
+    const int free {30000000};
+    auto size = d07p2Sample.sizeOfSmallestDirToDelete(total, free);
+    cout << "*** Puzzle2 ***" << endl << "* Sample: " << size << endl;
+
+    Puzzle2 d07p2;
+    size = d07p2.sizeOfSmallestDirToDelete(total, free);
+    cout << "*** Puzzle2 ***" << endl << "* Input file: " << size << endl;
 
     return EXIT_SUCCESS;
 }
