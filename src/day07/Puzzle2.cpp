@@ -28,5 +28,3 @@ int Puzzle2::sizeOfSmallestDirToDelete(int total, int freeRequired) const
 
     return size;
 }
-
-using namespace AronGaldonGines::AOC2022::D07;

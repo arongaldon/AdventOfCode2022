@@ -11,5 +11,3 @@ Puzzle2::Puzzle2(const string &input, size_t maxMarkerSize)
     : Puzzle1(input, maxMarkerSize)
 {
 }
-
-using namespace AronGaldonGines::AOC2022::D06;
