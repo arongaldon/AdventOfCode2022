@@ -8,7 +8,7 @@ class Puzzle2 : public Puzzle1
 {
 public:
     Puzzle2();
-    Puzzle2(const vector<string> &input);
+    Puzzle2(const HeightsGrid &grid);
 };
 
 } // namespace AronGaldonGines::AOC2022::D08

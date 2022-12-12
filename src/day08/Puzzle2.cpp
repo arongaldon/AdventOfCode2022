@@ -7,7 +7,7 @@ Puzzle2::Puzzle2()
 {
 }
 
-Puzzle2::Puzzle2(const vector<string> &input)
-    : Puzzle1(input)
+Puzzle2::Puzzle2(const HeightsGrid &grid)
+    : Puzzle1(grid)
 {
 }
