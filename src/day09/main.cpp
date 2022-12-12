@@ -7,8 +7,8 @@ using namespace AronGaldonGines::AOC2022::D09;
 
 int main()
 {
-    // Puzzle2 d09p2;
-    // cout << "*** Puzzle2 ***" << endl << "* Input file: " << size << endl;
+    Puzzle1 d09p1;
+    cout << "*** Puzzle1 ***" << endl << "* Input file: " << endl;
 
     return EXIT_SUCCESS;
 }

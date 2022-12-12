@@ -1,6 +1,7 @@
 #include "Puzzle1.h"
 
 #include <fstream>
+#include <iostream>
 #include <sstream>
 
 using namespace AronGaldonGines::AOC2022::D09;
@@ -10,20 +11,30 @@ Puzzle1::Puzzle1()
 {
 }
 
-Puzzle1::Puzzle1(const vector<string> &input)
+Puzzle1::Puzzle1(const vector<Motion> &input)
 {
+    for (Motion motion : input)
+        cout << static_cast<char>(motion.direction) << motion.steps << endl;
 }
 
-vector<string> Puzzle1::readInput() const
+vector<Motion> Puzzle1::readInput() const
 {
     ifstream inputFile(INPUT_FILE_NAME);
     string line;
-    vector<string> lines;
+    vector<Motion> motions;
 
-    while (getline(inputFile, line))
-        lines.push_back(line);
+    while (getline(inputFile, line)) {
+        stringstream ss(line);
+        string item;
+        Motion motion;
+        getline(ss, item, ' ');
+        motion.direction = static_cast<Direction>(item[0]);
+        getline(ss, item, ' ');
+        motion.steps = stoi(item);
+        motions.push_back(motion);
+    }
 
     inputFile.close();
 
-    return lines;
+    return motions;
 }
