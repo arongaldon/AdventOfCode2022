@@ -14,7 +14,17 @@
 			"sstream": "cpp",
 			"stack": "cpp",
 			"iostream": "cpp",
-			"string": "cpp"
+			"string": "cpp",
+			"deque": "cpp",
+			"iterator": "cpp",
+			"list": "cpp",
+			"vector": "cpp",
+			"xhash": "cpp",
+			"xtree": "cpp",
+			"initializer_list": "cpp",
+			"ranges": "cpp",
+			"span": "cpp",
+			"type_traits": "cpp"
 		}
 	}
 }
