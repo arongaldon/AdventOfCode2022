@@ -55,7 +55,7 @@ bool Puzzle1::isVisible(const size_t currRow, const size_t currCol) const
         visible = (m_gridOfTrees[currRow][col] < curr);
         if (!visible) {
             if (col > currCol)
-                return false;
+                break;
             else {
                 visible = true;
                 col = currCol;
@@ -78,7 +78,7 @@ bool Puzzle1::isVisible(const size_t currRow, const size_t currCol) const
         visible = (m_gridOfTrees[row][currCol] < curr);
         if (!visible) {
             if (row > currRow)
-                return false;
+                break;
             else {
                 visible = true;
                 row = currRow;

@@ -25,15 +25,10 @@ int main()
     auto quantity = d08p1sample.numberOfTreesVisibleFromOutside();
     cout << quantity << " trees are visible" << endl;
 
-
-
-    // 876, 1128 and 1308 TOO LOW!
-
-
-
-    // Puzzle1 d08p1;
-    // quantity = d08p1.numberOfTreesVisibleFromOutside();
-    // cout << "* Input file: " << quantity << " trees are visible" << endl;
+    cout << endl << "* Input file: " << endl;
+    Puzzle1 d08p1;
+    quantity = d08p1.numberOfTreesVisibleFromOutside();
+    cout << quantity << " trees are visible" << endl;
 
     return EXIT_SUCCESS;
 }
