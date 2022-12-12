@@ -20,7 +20,7 @@ int main()
     };
     // clang-format on
 
-    cout << "*** Puzzle2 ***" << endl << "* Sample: " << endl;
+    cout << "*** Puzzle1 ***" << endl << "* Sample: " << endl;
     Puzzle1 d08p1sample(sample);
     auto quantity = d08p1sample.numberOfTreesVisibleFromOutside();
     cout << quantity << " trees are visible" << endl;
@@ -28,7 +28,21 @@ int main()
     cout << endl << "* Input file: " << endl;
     Puzzle1 d08p1;
     quantity = d08p1.numberOfTreesVisibleFromOutside();
-    cout << quantity << " trees are visible" << endl;
+    cout << quantity << " trees are visible" << endl << endl;
+
+    cout << "*** Puzzle2 ***" << endl << "* Sample: " << endl;
+    Puzzle2 d08p2sample(sample);
+    auto score = d08p2sample.highestScenicScoreOfATree();
+    cout << score << " is the highest scenic score for a tree" << endl;
+
+    cout << endl << "* Input file: " << endl;
+    Puzzle2 d08p2;
+    score = d08p2.highestScenicScoreOfATree();
+    cout << score << " is the highest scenic score for a tree" << endl;
+
+    // 196 is too low!!!
+
+
 
     return EXIT_SUCCESS;
 }
