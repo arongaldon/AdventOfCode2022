@@ -8,7 +8,7 @@ using namespace std;
 
 namespace AronGaldonGines::AOC2022::D09 {
 
-const auto INPUT_FILE_NAME = "sample1.txt";
+const auto INPUT_FILE_NAME = "input.txt";
 
 enum class Direction
 {

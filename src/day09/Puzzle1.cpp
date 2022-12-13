@@ -38,68 +38,43 @@ void Puzzle1::sewYou()
 {
     Pos h(0, 0), t(0, 0);
     cout << " s h=" << h.str() << " t=" << t.str();
-    Motion prev;
-
     m_visited.insert(t.str());
-    bool wait = true;
+
     for (Motion mo : m_motions) {
         cout << endl << static_cast<char>(mo.direction) << mo.steps;
-
-        switch (mo.direction) {
-        case Direction::left:
-            wait = (h == t) || (prev.direction == Direction::right);
-            for (size_t s = 0; s < mo.steps; ++s) {
+        for (int s = 0; s < mo.steps; ++s) {
+            switch (mo.direction) {
+            case Direction::left:
                 h.x--;
-
-                if (!wait && (!h.diag1(t) && (h.x != t.x || abs(h.y - t.y) != 1))) {
+                if (t.x - h.x == 2) {
+                    t.x = h.x + 1;
                     t.y = h.y;
-                    t.x--;
-                    m_visited.insert(t.str());
                 }
-                wait = false;
-            }
-            break;
-        case Direction::right:
-            wait = (h == t) || (prev.direction == Direction::left);
-            for (size_t s = 0; s < mo.steps; ++s) {
+                break;
+            case Direction::right:
                 h.x++;
-
-                if (!wait && (!h.diag1(t) && (h.x != t.x || abs(h.y - t.y) != 1))) {
+                if (h.x - t.x == 2) {
+                    t.x = h.x - 1;
                     t.y = h.y;
-                    t.x++;
-                    m_visited.insert(t.str());
                 }
-                wait = false;
-            }
-            break;
-        case Direction::up:
-            wait = (h == t) || (prev.direction == Direction::down);
-            for (size_t s = 0; s < mo.steps; ++s) {
+                break;
+            case Direction::up:
                 h.y++;
-
-                if (!wait && (!h.diag1(t) && (h.y != t.y || abs(h.x - t.x) != 1))) {
+                if (h.y - t.y == 2) {
+                    t.y = h.y - 1;
                     t.x = h.x;
-                    t.y++;
-                    m_visited.insert(t.str());
                 }
-                wait = false;
-            }
-            break;
-        case Direction::down:
-            wait = (h == t) || (prev.direction == Direction::up);
-            for (size_t s = 0; s < mo.steps; ++s) {
+                break;
+            case Direction::down:
                 h.y--;
-
-                if (!wait && (!h.diag1(t) && (h.y != t.y || abs(h.x - t.x) != 1))) {
+                if (t.y - h.y == 2) {
+                    t.y = h.y + 1;
                     t.x = h.x;
-                    t.y--;
-                    m_visited.insert(t.str());
                 }
-                wait = false;
+                break;
             }
-            break;
+            m_visited.insert(t.str());
         }
-        prev = mo;
         cout << " h=" << h.str() << " t=" << t.str();
     }
 }

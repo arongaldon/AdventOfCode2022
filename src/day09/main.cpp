@@ -11,8 +11,7 @@ int main()
     Puzzle1 d09p1;
     auto positions = d09p1.visitedPositionsByT();
     cout << "* Input file: " << endl << "The tail visited " << positions << " positions." << endl;
-
-    // (5683 .. 6529, 6674)
+    // 6391
 
     return EXIT_SUCCESS;
 }
