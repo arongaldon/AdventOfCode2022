@@ -20,7 +20,7 @@ Puzzle1::Puzzle1(const vector<Motion> &motions)
 int Puzzle1::visitedPositionsByT() const
 {
     cout << endl;
-    const int SIZE = 220;
+    const int SIZE = 6;
     for (int y = SIZE - 1; y >= 0; --y) {
         for (int x = 0; x < SIZE; ++x)
             if (x == 0 && y == 0)
@@ -41,85 +41,61 @@ void Puzzle1::sewYou()
     Motion prev;
 
     m_visited.insert(t.str());
-    int cuenta = 0;
+    bool wait = true;
     for (Motion mo : m_motions) {
         cout << endl << static_cast<char>(mo.direction) << mo.steps;
 
         switch (mo.direction) {
         case Direction::left:
+            wait = (h == t) || (prev.direction == Direction::right);
             for (size_t s = 0; s < mo.steps; ++s) {
-                bool wait = (h == t) || (prev.direction == Direction::right);
-
                 h.x--;
 
-                if (!wait && h.diag1(t))
-                    wait = true;
-
-                if (!wait && h.x == t.x && abs(h.y - t.y) == 1)
-                    wait = true;
-
-                if (!wait) {
+                if (!wait && (!h.diag1(t) && (h.x != t.x || abs(h.y - t.y) != 1))) {
                     t.y = h.y;
                     t.x--;
                     m_visited.insert(t.str());
                 }
+                wait = false;
             }
             break;
         case Direction::right:
+            wait = (h == t) || (prev.direction == Direction::left);
             for (size_t s = 0; s < mo.steps; ++s) {
-                bool wait = (h == t) || (prev.direction == Direction::left);
-
                 h.x++;
 
-                if (!wait && h.diag1(t))
-                    wait = true;
-
-                if (!wait && h.x == t.x && abs(h.y - t.y) == 1)
-                    wait = true;
-
-                if (!wait) {
+                if (!wait && (!h.diag1(t) && (h.x != t.x || abs(h.y - t.y) != 1))) {
                     t.y = h.y;
                     t.x++;
                     m_visited.insert(t.str());
                 }
+                wait = false;
             }
             break;
         case Direction::up:
+            wait = (h == t) || (prev.direction == Direction::down);
             for (size_t s = 0; s < mo.steps; ++s) {
-                bool wait = (h == t) || (prev.direction == Direction::down);
-
                 h.y++;
 
-                if (!wait && h.diag1(t))
-                    wait = true;
-
-                if (!wait && h.y == t.y && abs(h.x - t.x) == 1)
-                    wait = true;
-
-                if (!wait) {
+                if (!wait && (!h.diag1(t) && (h.y != t.y || abs(h.x - t.x) != 1))) {
                     t.x = h.x;
                     t.y++;
                     m_visited.insert(t.str());
                 }
+                wait = false;
             }
             break;
         case Direction::down:
+            wait = (h == t) || (prev.direction == Direction::up);
             for (size_t s = 0; s < mo.steps; ++s) {
-                bool wait = (h == t) || (prev.direction == Direction::up);
-
                 h.y--;
 
-                if (!wait && h.diag1(t))
-                    wait = true;
-
-                if (!wait && h.y == t.y && abs(h.x - t.x) == 1)
-                    wait = true;
-
-                if (!wait) {
+                if (!wait && (!h.diag1(t) && (h.y != t.y || abs(h.x - t.x) != 1))) {
                     t.x = h.x;
                     t.y--;
                     m_visited.insert(t.str());
                 }
+                wait = false;
             }
             break;
         }
