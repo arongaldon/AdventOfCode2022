@@ -1,6 +1,7 @@
 #include "Puzzle1.h"
 
 #include <fstream>
+#include <iomanip>
 #include <iostream>
 #include <sstream>
 
@@ -17,12 +18,10 @@ Puzzle1::Puzzle1(const vector<Motion> &motions)
     sewYou();
 }
 
-int Puzzle1::visitedPositionsByT() const
+void Puzzle1::draw(int min, int max) const
 {
-    cout << endl;
-    const int SIZE = 6;
-    for (int y = SIZE - 1; y >= 0; --y) {
-        for (int x = 0; x < SIZE; ++x)
+    for (int y = max; y >= min; --y) {
+        for (int x = min; x <= max; ++x)
             if (x == 0 && y == 0)
                 cout << "s";
             else if (m_visited.find(Pos(x, y).str()) == m_visited.end())
@@ -31,17 +30,23 @@ int Puzzle1::visitedPositionsByT() const
                 cout << "#";
         cout << endl;
     }
+}
+
+int Puzzle1::visitedPositionsByT() const
+{
     return static_cast<int>(m_visited.size());
 }
 
 void Puzzle1::sewYou()
 {
     Pos h(0, 0), t(0, 0);
-    cout << " s h=" << h.str() << " t=" << t.str();
+    cout << "   s h(" << setfill(' ') << setw(4) << h.x << "," << setfill(' ') << setw(4) << h.y
+         << ")t(" << setfill(' ') << setw(4) << t.x << "," << setfill(' ') << setw(4) << t.y << ")";
     m_visited.insert(t.str());
 
+    int i = 1;
     for (Motion mo : m_motions) {
-        cout << endl << static_cast<char>(mo.direction) << mo.steps;
+        cout << setfill(' ') << setw(3) << mo.steps << static_cast<char>(mo.direction);
         for (int s = 0; s < mo.steps; ++s) {
             switch (mo.direction) {
             case Direction::left:
@@ -75,8 +80,12 @@ void Puzzle1::sewYou()
             }
             m_visited.insert(t.str());
         }
-        cout << " h=" << h.str() << " t=" << t.str();
+        i++;
+        cout << " h(" << setfill(' ') << setw(4) << h.x << "," << setfill(' ') << setw(4) << h.y
+             << ")t(" << setfill(' ') << setw(4) << t.x << "," << setfill(' ') << setw(4) << t.y
+             << ")" << ((i % 5 == 0) ? "\n" : "");
     }
+    cout << endl;
 }
 
 vector<Motion> Puzzle1::readInput() const

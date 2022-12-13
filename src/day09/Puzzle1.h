@@ -64,6 +64,7 @@ class Puzzle1
 public:
     Puzzle1();
     Puzzle1(const vector<Motion> &motions);
+    void draw(int min, int max) const;
     int visitedPositionsByT() const;
 
 protected:
