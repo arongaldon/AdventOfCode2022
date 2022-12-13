@@ -24,7 +24,8 @@
 			"initializer_list": "cpp",
 			"ranges": "cpp",
 			"span": "cpp",
-			"type_traits": "cpp"
+			"type_traits": "cpp",
+			"set": "cpp"
 		}
 	}
 }

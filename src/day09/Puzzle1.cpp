@@ -11,10 +11,121 @@ Puzzle1::Puzzle1()
 {
 }
 
-Puzzle1::Puzzle1(const vector<Motion> &input)
+Puzzle1::Puzzle1(const vector<Motion> &motions)
+    : m_motions(motions)
 {
-    for (Motion motion : input)
-        cout << static_cast<char>(motion.direction) << motion.steps << endl;
+    sewYou();
+}
+
+int Puzzle1::visitedPositionsByT() const
+{
+    cout << endl;
+    const int SIZE = 220;
+    for (int y = SIZE - 1; y >= 0; --y) {
+        for (int x = 0; x < SIZE; ++x)
+            if (x == 0 && y == 0)
+                cout << "s";
+            else if (m_visited.find(Pos(x, y).str()) == m_visited.end())
+                cout << ".";
+            else
+                cout << "#";
+        cout << endl;
+    }
+    return static_cast<int>(m_visited.size());
+}
+
+void Puzzle1::sewYou()
+{
+    Pos h(0, 0), t(0, 0);
+    cout << " s h=" << h.str() << " t=" << t.str();
+    Motion prev;
+
+    m_visited.insert(t.str());
+    int cuenta = 0;
+    for (Motion mo : m_motions) {
+        cout << endl << static_cast<char>(mo.direction) << mo.steps;
+
+        switch (mo.direction) {
+        case Direction::left:
+            for (size_t s = 0; s < mo.steps; ++s) {
+                bool wait = (h == t) || (prev.direction == Direction::right);
+
+                h.x--;
+
+                if (!wait && h.diag1(t))
+                    wait = true;
+
+                if (!wait && h.x == t.x && abs(h.y - t.y) == 1)
+                    wait = true;
+
+                if (!wait) {
+                    t.y = h.y;
+                    t.x--;
+                    m_visited.insert(t.str());
+                }
+            }
+            break;
+        case Direction::right:
+            for (size_t s = 0; s < mo.steps; ++s) {
+                bool wait = (h == t) || (prev.direction == Direction::left);
+
+                h.x++;
+
+                if (!wait && h.diag1(t))
+                    wait = true;
+
+                if (!wait && h.x == t.x && abs(h.y - t.y) == 1)
+                    wait = true;
+
+                if (!wait) {
+                    t.y = h.y;
+                    t.x++;
+                    m_visited.insert(t.str());
+                }
+            }
+            break;
+        case Direction::up:
+            for (size_t s = 0; s < mo.steps; ++s) {
+                bool wait = (h == t) || (prev.direction == Direction::down);
+
+                h.y++;
+
+                if (!wait && h.diag1(t))
+                    wait = true;
+
+                if (!wait && h.y == t.y && abs(h.x - t.x) == 1)
+                    wait = true;
+
+                if (!wait) {
+                    t.x = h.x;
+                    t.y++;
+                    m_visited.insert(t.str());
+                }
+            }
+            break;
+        case Direction::down:
+            for (size_t s = 0; s < mo.steps; ++s) {
+                bool wait = (h == t) || (prev.direction == Direction::up);
+
+                h.y--;
+
+                if (!wait && h.diag1(t))
+                    wait = true;
+
+                if (!wait && h.y == t.y && abs(h.x - t.x) == 1)
+                    wait = true;
+
+                if (!wait) {
+                    t.x = h.x;
+                    t.y--;
+                    m_visited.insert(t.str());
+                }
+            }
+            break;
+        }
+        prev = mo;
+        cout << " h=" << h.str() << " t=" << t.str();
+    }
 }
 
 vector<Motion> Puzzle1::readInput() const

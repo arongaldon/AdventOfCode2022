@@ -8,7 +8,12 @@ using namespace AronGaldonGines::AOC2022::D09;
 int main()
 {
     Puzzle1 d09p1;
-    cout << "*** Puzzle1 ***" << endl << "* Input file: " << endl;
+    auto positions = d09p1.visitedPositionsByT();
+    cout << "*** Puzzle1 ***" << endl
+         << "* Input file: " << endl
+         << "The tail visited " << positions << " positions." << endl;
+
+    // (5683 .. 6674)
 
     return EXIT_SUCCESS;
 }
