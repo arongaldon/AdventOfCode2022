@@ -39,8 +39,8 @@ int main()
     cout << "* Input file: sum of the six signal strengths=" << sum << endl;
 
     cout << endl << "*** Puzzle2 ***" << endl;
-    // Puzzle2 d10p2;
-    // cout << "* Input file: " << size << endl;
+    Puzzle2 d10p2;
+    d10p2.display();
 
     return EXIT_SUCCESS;
 }

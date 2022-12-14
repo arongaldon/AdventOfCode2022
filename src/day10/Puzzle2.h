@@ -9,6 +9,7 @@ class Puzzle2 : public Puzzle1
 public:
     Puzzle2();
     Puzzle2(const queue<Instruction> &input);
+    void display();
 };
 
 } // namespace AronGaldonGines::AOC2022::D10
