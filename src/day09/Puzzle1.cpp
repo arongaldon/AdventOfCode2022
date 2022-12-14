@@ -15,7 +15,6 @@ Puzzle1::Puzzle1()
 Puzzle1::Puzzle1(const vector<Motion> &motions)
     : m_motions(motions)
 {
-    sewYou();
 }
 
 void Puzzle1::draw(int min, int max) const
@@ -83,7 +82,7 @@ void Puzzle1::sewYou()
         i++;
         cout << " h(" << setfill(' ') << setw(4) << h.x << "," << setfill(' ') << setw(4) << h.y
              << ")t(" << setfill(' ') << setw(4) << t.x << "," << setfill(' ') << setw(4) << t.y
-             << ")" << ((i % 5 == 0) ? "\n" : "");
+             << ")" << (i % 4 == 0 ? "\n" : "");
     }
     cout << endl;
 }
