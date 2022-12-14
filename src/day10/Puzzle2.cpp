@@ -7,7 +7,7 @@ Puzzle2::Puzzle2()
 {
 }
 
-Puzzle2::Puzzle2(const vector<string> &input)
+Puzzle2::Puzzle2(const queue<Instruction> &input)
     : Puzzle1(input)
 {
 }
